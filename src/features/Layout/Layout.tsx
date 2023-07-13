@@ -1,3 +1,4 @@
+import { Footer, Header } from "@/src/components";
 import { FC, ReactNode } from "react";
 
 interface LayoutProps {
@@ -7,8 +8,10 @@ interface LayoutProps {
 export const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <div>
+      <Header />
       <h1>Hello Layout</h1>
       {children}
+      <Footer />
     </div>
   );
 };
