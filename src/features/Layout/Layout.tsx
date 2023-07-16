@@ -1,4 +1,4 @@
-import { Header, Footer } from '@/src/components';
+import { Header, Footer } from 'components';
 import { FC, ReactNode } from 'react';
 
 interface LayoutProps {
