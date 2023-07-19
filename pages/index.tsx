@@ -1,3 +1,7 @@
 export default function Page() {
-  return <h1>Our hockey app already has been started</h1>;
+  return (
+    <div>
+      <h2>Main page</h2>
+    </div>
+  );
 }
