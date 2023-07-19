@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export type PlayersState = {
-    name?: string
+    name: string
     playersList: Object[]
 }
 
@@ -23,17 +23,19 @@ export const playersSlice = createSlice({
     name: 'playersSlice',
     initialState,
     reducers: {
-        setPlayerName: (state, action: PayloadAction<string | undefined>) => {
+        updateInputName: (state, action: PayloadAction<string>) => {
             state.name = action.payload
         },
-        addPlayer: (state, action: PayloadAction<Object>) => {
-            let id = 3
-            state.playersList.push(action.payload)
-            id++
+        setPlayer: (state, action: PayloadAction<string>) => {
+            let idPlayer = state.playersList.length + 1;
+            state.playersList = [...state.playersList, {
+                id: idPlayer,
+                playerName: action.payload
+            }]
         }
     }
 })
 
-export const { setPlayerName, addPlayer } = playersSlice.actions
+export const { setPlayer, updateInputName } = playersSlice.actions
 
 export default playersSlice.reducer
