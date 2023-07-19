@@ -1,9 +1,9 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
-import playersSlice from './slices/players';
+import players from './slices/players';
 
 export const store = configureStore({
     reducer: {
-        players: playersSlice
+        players
     }
 })
 

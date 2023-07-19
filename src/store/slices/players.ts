@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { v4 as uuidv4 } from 'uuid'
 
 export type PlayersState = {
     name: string
@@ -6,7 +7,7 @@ export type PlayersState = {
 }
 
 export type Player = {
-    id: number,
+    id: string,
     playerName: string
 }
 
@@ -14,11 +15,11 @@ const initialState: PlayersState = {
     name: '',
     playersList: [
         {
-            id: 1,
-            playerName: 'Midle Anton'
+            id: uuidv4(),
+            playerName: 'Middle Anton'
         },
         {
-            id: 2,
+            id: uuidv4(),
             playerName: 'Zarik Dima'
         }
     ]
@@ -32,11 +33,11 @@ export const playersSlice = createSlice({
             state.name = action.payload
         },
         setPlayer: (state, action: PayloadAction<string>) => {
-            let idPlayer = state.playersList.length + 1;
             state.playersList = [...state.playersList, {
-                id: idPlayer,
+                id: uuidv4(),
                 playerName: action.payload
             }]
+            state.name = ''
         }
     }
 })
