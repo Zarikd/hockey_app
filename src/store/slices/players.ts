@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { v4 as uuidv4 } from 'uuid'
 
 export type PlayersState = {
@@ -11,18 +11,15 @@ export type Player = {
     playerName: string
 }
 
+export const fetchPlayers = createAsyncThunk('person/fetch', async (thunkAPI) => {
+    const response = await fetch('/api/players', { method: 'GET'})
+    const data = response.json();
+    return data;
+})
+
 const initialState: PlayersState = {
     name: '',
-    playersList: [
-        {
-            id: uuidv4(),
-            playerName: 'Middle Anton'
-        },
-        {
-            id: uuidv4(),
-            playerName: 'Zarik Dima'
-        }
-    ]
+    playersList: []
 }
 
 export const playersSlice = createSlice({
@@ -39,7 +36,12 @@ export const playersSlice = createSlice({
             }]
             state.name = ''
         }
-    }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(fetchPlayers.fulfilled, (state, action) => {
+            state.playersList = action.payload;
+        })
+    } 
 })
 
 export const { setPlayer, updateInputName } = playersSlice.actions
