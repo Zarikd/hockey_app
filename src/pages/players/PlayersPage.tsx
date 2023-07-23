@@ -1,11 +1,14 @@
 import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
 import { fetchPlayers, setPlayer, updateInputName } from '@/src/store/slices/players';
+import { useEffect } from 'react';
 
 export const PlayersPage = () => {
     const players = useAppSelector(state => state.players.playersList)
     const inputName = useAppSelector(state => state.players.name)
     const dispath = useAppDispatch()
-    dispath(fetchPlayers())
+    useEffect(() => {
+        dispath(fetchPlayers())
+    }, [dispath])
     return (
         <div>
             <h2>Players list</h2>
