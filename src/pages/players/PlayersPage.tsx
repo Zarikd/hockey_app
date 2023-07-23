@@ -1,10 +1,11 @@
 import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
-import { setPlayer, updateInputName } from '@/src/store/slices/players';
+import { fetchPlayers, setPlayer, updateInputName } from '@/src/store/slices/players';
 
 export const PlayersPage = () => {
     const players = useAppSelector(state => state.players.playersList)
     const inputName = useAppSelector(state => state.players.name)
     const dispath = useAppDispatch()
+    dispath(fetchPlayers())
     return (
         <div>
             <h2>Players list</h2>
