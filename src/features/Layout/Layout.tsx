@@ -1,6 +1,7 @@
 import { Header, Footer } from 'components';
 import Link from 'next/link';
 import { FC, ReactNode } from 'react';
+import s from './Layout.module.scss'
 
 interface LayoutProps {
   children: ReactNode;
@@ -8,7 +9,7 @@ interface LayoutProps {
 
 export const Layout: FC<LayoutProps> = ({ children }) => {
   return (
-    <div>
+    <div className={s.layoutWarapper}>
       <Header />
       <div>
         <Link href='/'>
