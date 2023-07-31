@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { v4 as uuidv4 } from 'uuid'
+import { useAppDispatch } from '@/src/shared/hooks/redux';
+import { RootState } from '..';
 
 export type PlayersState = {
     name: string
@@ -7,13 +8,34 @@ export type PlayersState = {
 }
 
 export type Player = {
-    id: string,
+    uuidPlayer: string,
+    playerData: PlayerData
+}
+
+export type PlayerData = {
     playerName: string
 }
 
-export const fetchPlayers = createAsyncThunk('person/fetch', async (thunkAPI) => {
+export const fetchPlayers = createAsyncThunk('players/fetch', async () => {
     const response = await fetch('/api/players', { method: 'GET'})
     const data = response.json();
+    return data;
+})
+
+export const addPlayer = createAsyncThunk<string, void, {state: RootState}>('players/add', async (userId, { getState, dispatch }) => {
+    const playerName: string = getState().players.name;
+    
+    const response = await fetch('/api/players', {
+        method: 'POST',
+        body: JSON.stringify({playerName}),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    const data = response.json();
+
+    await dispatch(fetchPlayers())
+
     return data;
 })
 
@@ -26,15 +48,8 @@ export const playersSlice = createSlice({
     name: 'playersSlice',
     initialState,
     reducers: {
-        updateInputName: (state, action: PayloadAction<string>) => {
+        updatePlayerName: (state, action: PayloadAction<string>) => {
             state.name = action.payload
-        },
-        setPlayer: (state, action: PayloadAction<string>) => {
-            state.playersList = [...state.playersList, {
-                id: uuidv4(),
-                playerName: action.payload
-            }]
-            state.name = ''
         }
     },
     extraReducers: (builder) => {
@@ -44,6 +59,6 @@ export const playersSlice = createSlice({
     } 
 })
 
-export const { setPlayer, updateInputName } = playersSlice.actions
+export const { updatePlayerName } = playersSlice.actions
 
 export default playersSlice.reducer
