@@ -9,7 +9,8 @@ export type PlayersState = {
 
 export type Player = {
     uuidPlayer: string,
-    playerData: PlayerData
+    playerData: PlayerData,
+    dateAdded: string
 }
 
 export type PlayerData = {
@@ -17,17 +18,33 @@ export type PlayerData = {
 }
 
 export const fetchPlayers = createAsyncThunk('players/fetch', async () => {
-    const response = await fetch('/api/players', { method: 'GET'})
+    const response = await fetch('/api/players', { method: 'GET' })
     const data = response.json();
     return data;
 })
 
-export const addPlayer = createAsyncThunk<string, void, {state: RootState}>('players/add', async (userId, { getState, dispatch }) => {
+export const addPlayer = createAsyncThunk<string, void, { state: RootState }>('players/add', async (userId, { getState, dispatch }) => {
     const playerName: string = getState().players.name;
-    
+
     const response = await fetch('/api/players', {
         method: 'POST',
-        body: JSON.stringify({playerName}),
+        body: JSON.stringify({ playerName }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    const data = response.json();
+
+    await dispatch(fetchPlayers())
+
+    return data;
+})
+
+export const deletePlayer = createAsyncThunk('players/delete', async (uuidPlayer: string, { dispatch }) => {
+
+    const response = await fetch('/api/players', {
+        method: 'DELETE',
+        body: JSON.stringify({ uuidPlayer }),
         headers: {
             'Content-Type': 'application/json'
         }
@@ -56,7 +73,7 @@ export const playersSlice = createSlice({
         builder.addCase(fetchPlayers.fulfilled, (state, action) => {
             state.playersList = action.payload;
         })
-    } 
+    }
 })
 
 export const { updatePlayerName } = playersSlice.actions

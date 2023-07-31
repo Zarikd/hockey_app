@@ -7,6 +7,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         await GET(req, res)
     else if (req.method === 'POST')
         await POST(req, res)
+    else if (req.method === 'DELETE')
+        await _DELETE(req, res)
+
 }
 
 const GET = async function (req: NextApiRequest, res: NextApiResponse) {
@@ -37,8 +40,28 @@ const POST = async function (req: NextApiRequest, res: NextApiResponse) {
     }
     try {
         const query = 'INSERT INTO "testTable" ("playerData") VALUES ($1)'
-        const result = await conn.query(query, [{playerName: req.body.playerName}]);
-        res.status(200).json({ok: true})
+        const result = await conn.query(query, [{ playerName: req.body.playerName }]);
+        res.status(200).json({ ok: true })
+    } catch (e) {
+        console.log(e)
+        res.status(500).json({
+            error: 'Something happened'
+        })
+    }
+
+}
+
+const _DELETE = async function (req: NextApiRequest, res: NextApiResponse) {
+    if (!conn) {
+        res.status(500).json({
+            error: 'DB connection fails'
+        })
+        return;
+    }
+    try {
+        const query = 'DELETE FROM "testTable" WHERE "uuidPlayer"=$1'
+        const result = await conn.query(query, [req.body.uuidPlayer]);
+        res.status(200).json({ ok: true })
     } catch (e) {
         console.log(e)
         res.status(500).json({

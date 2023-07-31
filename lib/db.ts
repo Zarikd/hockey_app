@@ -1,6 +1,6 @@
 import { Pool } from 'pg';
 
-let conn:Pool | undefined;
+let conn: Pool | undefined;
 
 type PoolConfig = {
   user: string | undefined,
@@ -10,7 +10,7 @@ type PoolConfig = {
   database: string | undefined
 }
 
-const poolConfig:PoolConfig = {
+const poolConfig: PoolConfig = {
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   host: process.env.DB_HOST,
