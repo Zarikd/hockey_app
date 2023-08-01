@@ -1,5 +1,5 @@
-import { PlayersPage } from 'pages'
-import { NextPage } from 'next'
+import {PlayersPage} from 'pages'
+import {NextPage} from 'next'
 
 const Players: NextPage = () => <PlayersPage />
 

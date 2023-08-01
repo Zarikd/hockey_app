@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 
 export type AuthState = {
   isAuth: boolean,
@@ -23,6 +23,6 @@ export const authSlice = createSlice({
   }
 })
 
-export const { setAuth, setLogin } = authSlice.actions
+export const {setAuth, setLogin} = authSlice.actions
 
 export default authSlice.reducer

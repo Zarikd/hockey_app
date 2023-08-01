@@ -1,17 +1,17 @@
-import { FC, useState } from 'react';
+import {FC, useState} from 'react';
 import s from './Header.module.scss';
-import { Auth, Gamburger } from '../Icons';
+import {Auth, Gamburger} from '../Icons';
 import cn from 'classnames'
-import { AuthModal } from '../Modals';
-import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
-import { setAuth, setLogin } from '@/src/store/slices/auth';
+import {AuthModal} from '../Modals';
+import {useAppDispatch, useAppSelector} from '@/src/shared/hooks/redux';
+import {setAuth, setLogin} from '@/src/store/slices/auth';
 
 interface HeaderProps {
   className?: string
 }
 
 export const Header: FC<HeaderProps> = (
-  { className,
+  {className,
   }
 ) => {
   const headerClass = cn(s.headerWrapper, className)

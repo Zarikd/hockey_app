@@ -1,5 +1,5 @@
-import { FC } from 'react'
-import { IconProps } from '../type'
+import {FC} from 'react'
+import {IconProps} from '../type'
 import cn from 'classnames'
 import s from './Gamburger.module.scss'
 
@@ -12,7 +12,7 @@ export const Gamburger: FC<IconProps> = ({
 }) => {
   return (
     <span
-      style={size ? { height: size } : {}}
+      style={size ? {height: size} : {}}
       className={cn(s.icon, className)}
       onClick={onClick}
     >
@@ -28,4 +28,4 @@ export const Gamburger: FC<IconProps> = ({
       </svg>
     </span>
   )
-} 
+}
