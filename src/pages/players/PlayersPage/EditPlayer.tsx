@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
-import { updateEditableName, updatePlayer } from '@/src/store/slices/players';
+import { updateEditableName } from '@/src/store/slices/players';
+import { updatePlayer } from '@/src/store/thunks/players';
 
 export const EditPlayer = () => {
   const dispatch = useAppDispatch()

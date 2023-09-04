@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
-import { deletePlayer, updateEditableUuid } from '@/src/store/slices/players';
+import { updateEditableUuid } from '@/src/store/slices/players';
+import { deletePlayer } from '@/src/store/thunks/players';
 
 export const PlayersTable = () => {
 

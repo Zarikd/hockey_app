@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
-import { addPlayer, updatePlayerName } from '@/src/store/slices/players';
+import { updatePlayerName } from '@/src/store/slices/players';
+import { addPlayer } from '@/src/store/thunks/players';
 
 export const AddPlayer = () => {
 
