@@ -1,5 +1,5 @@
-import { ChangeEvent, FC, useEffect, useState } from 'react'
-import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import {ChangeEvent, FC, useEffect, useState} from 'react'
+import {Controller, SubmitHandler, useForm} from 'react-hook-form'
 import Link from 'next/link'
 
 import cn from 'classnames'
@@ -10,7 +10,7 @@ export type InputProps = {
   initValue?: string | number
 }
 
-export const Input: FC<InputProps> = ({ onChange, initValue = '' }) => {
+export const Input: FC<InputProps> = ({onChange, initValue = ''}) => {
   const [value, setValue] = useState(initValue)
 
   useEffect(() => {
@@ -35,11 +35,11 @@ interface AuthModal {
   email: string
 }
 
-export const AuthModal: FC<AuthModalProps> = ({ onCotinue }) => {
+export const AuthModal: FC<AuthModalProps> = ({onCotinue}) => {
   const {
     control,
     handleSubmit,
-    formState: { errors }
+    formState: {errors}
   } = useForm<AuthModal>()
 
 
@@ -55,7 +55,7 @@ export const AuthModal: FC<AuthModalProps> = ({ onCotinue }) => {
       rules={{
         required: 'Email is required'
       }}
-      render={({ field: { onChange, value } }) => (
+      render={({field: {onChange, value}}) => (
         <Input initValue={value} onChange={onChange} />
       )}
     />

@@ -1,5 +1,5 @@
-import { FC } from 'react'
-import { IconProps } from '../type'
+import {FC} from 'react'
+import {IconProps} from '../type'
 import cn from 'classnames'
 import s from './Auth.module.scss'
 
@@ -12,7 +12,7 @@ export const Auth: FC<IconProps> = ({
 }) => {
   return (
     <span
-      style={size ? { height: size } : {}}
+      style={size ? {height: size} : {}}
       className={cn(s.icon, className)}
       onClick={onClick}
     >

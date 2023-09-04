@@ -1,5 +1,5 @@
-import { Auth } from './Auth/Auth';
-import { Gamburger } from './Gamburger/Gamburger'
+import {Auth} from './Auth/Auth';
+import {Gamburger} from './Gamburger/Gamburger'
 
 
 export {

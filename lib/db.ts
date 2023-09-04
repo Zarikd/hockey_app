@@ -1,6 +1,4 @@
-import { Pool } from 'pg';
-
-let conn: Pool | undefined;
+import {Pool} from 'pg';
 
 type PoolConfig = {
   user: string | undefined,
@@ -18,8 +16,19 @@ const poolConfig: PoolConfig = {
   database: process.env.DB_NAME
 }
 
-if (!conn) {
-  conn = new Pool(poolConfig)
+let connection: Pool | undefined;
+
+const connect = (): Pool => {
+  try {
+    if (!connection) {
+      connection = new Pool(poolConfig)
+    }
+    return connection
+  } catch (err) {
+    throw err
+  }
 }
+
+const conn = connect();
 
 export default conn;

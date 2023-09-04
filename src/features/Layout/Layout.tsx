@@ -1,13 +1,13 @@
-import { Header, Footer } from 'components';
+import {Header, Footer} from 'components';
 import Link from 'next/link';
-import { FC, ReactNode } from 'react';
+import {FC, ReactNode} from 'react';
 import s from './Layout.module.scss'
 
 interface LayoutProps {
   children: ReactNode;
 }
 
-export const Layout: FC<LayoutProps> = ({ children }) => {
+export const Layout: FC<LayoutProps> = ({children}) => {
   return (
     <div className={s.layoutWarapper}>
       <Header />
