@@ -5,6 +5,8 @@ import { RootState } from '..';
 export type PlayersState = {
     name: string
     playersList: Player[]
+    editableUuid: string
+    editableName: string
 }
 
 export type Player = {
@@ -33,11 +35,25 @@ export const addPlayer = createAsyncThunk<string, void, { state: RootState }>('p
             'Content-Type': 'application/json'
         }
     })
-    const data = response.json();
+    const data = await response.json();
 
     await dispatch(fetchPlayers())
 
     return data;
+})
+
+export const updatePlayer = createAsyncThunk<void, void, { state: RootState }>('players/update', async (userId, { getState, dispatch }) => {
+    const uuid: string = getState().players.editableUuid;
+    const playerName: string = getState().players.editableName;
+
+    const response = await fetch(`/api/players/${uuid}`, {
+        method: 'PUT',
+        body: JSON.stringify({ playerName }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    await dispatch(fetchPlayers())
 })
 
 export const deletePlayer = createAsyncThunk('players/delete', async (uuidPlayer: string, { dispatch }) => {
@@ -58,7 +74,9 @@ export const deletePlayer = createAsyncThunk('players/delete', async (uuidPlayer
 
 const initialState: PlayersState = {
     name: '',
-    playersList: []
+    playersList: [],
+    editableName: '',
+    editableUuid: ''
 }
 
 export const playersSlice = createSlice({
@@ -67,6 +85,19 @@ export const playersSlice = createSlice({
     reducers: {
         updatePlayerName: (state, action: PayloadAction<string>) => {
             state.name = action.payload
+        },
+        updateEditableUuid: (state, action: PayloadAction<string>) => {
+            const findedPlayer = state.playersList.find((player: Player) => player.uuidPlayer === action.payload)
+            if (findedPlayer) {
+                state.editableUuid = findedPlayer.uuidPlayer
+                state.editableName = findedPlayer.playerData.playerName
+            } else {
+                state.editableUuid = ''
+                state.editableName = ''
+            }
+        },
+        updateEditableName: (state, action: PayloadAction<string>) => {
+            state.editableName = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -76,6 +107,6 @@ export const playersSlice = createSlice({
     }
 })
 
-export const { updatePlayerName } = playersSlice.actions
+export const { updatePlayerName, updateEditableName, updateEditableUuid } = playersSlice.actions
 
 export default playersSlice.reducer

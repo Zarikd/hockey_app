@@ -9,7 +9,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         await POST(req, res)
     else if (req.method === 'DELETE')
         await _DELETE(req, res)
-
 }
 
 const GET = async function (req: NextApiRequest, res: NextApiResponse) {
@@ -51,6 +50,7 @@ const POST = async function (req: NextApiRequest, res: NextApiResponse) {
 
 }
 
+
 const _DELETE = async function (req: NextApiRequest, res: NextApiResponse) {
     if (!conn) {
         res.status(500).json({
@@ -70,3 +70,4 @@ const _DELETE = async function (req: NextApiRequest, res: NextApiResponse) {
     }
 
 }
+
