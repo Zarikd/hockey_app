@@ -4,6 +4,7 @@ import { AddPlayer } from './AddPlayer';
 import { EditPlayer } from './EditPlayer';
 import { PlayersTable } from './PlayersTable';
 import { fetchPlayers } from '@/src/store/thunks/players';
+import { FC, useState } from 'react';
 
 export const PlayersPage = () => {
 
@@ -13,12 +14,18 @@ export const PlayersPage = () => {
     dispatch(fetchPlayers())
   }, [dispatch])
 
+  const [isActive, setActive] = useState<boolean>(false)
+  const setActiveHandle = (data: boolean) => {
+    setActive(data)
+  }
 
   return (
     <div>
-      <PlayersTable />
+      <PlayersTable isEditPlayerActive={setActiveHandle} />
       <AddPlayer />
-      <EditPlayer />
+      {isActive ?
+        <EditPlayer onClose={() => { setActive(false) }} /> :
+        <></>}
     </div>
   )
 }
