@@ -42,6 +42,9 @@
       ],
       "api": [
         "./src/api"
+      ],
+      "style": [
+        "./src/style"
       ]
     }
   },

@@ -8,6 +8,6 @@ interface Modal {
 }
 
 export const Modal: FC<Modal> = ({ children, onClose }) => {
-  
+
   return <div className={s.modalwrapper} onClick={onClose}>{children}</div>
 }

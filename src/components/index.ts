@@ -2,5 +2,4 @@ export * from './Header'
 export * from './Footer'
 export * from './Modals'
 export * from './Modal'
-
-
+export * from './Input'

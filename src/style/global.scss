@@ -1,3 +1,7 @@
+@use './style.scss' as *;
+
+@import '../../public/assets/fonts/stylesheet.scss';
+
 html,
 body {
   margin: 0;
