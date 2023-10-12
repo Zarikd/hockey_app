@@ -8,12 +8,13 @@ import cn from 'classnames'
 
 
 import s from './Input.module.scss'
+import { EyeIcon, LoginIcon } from '../Icons'
 
 export type InputProps = {
   className?: string
   initValue?: string | number
   placeholder?: string
-  error?: Error
+  error?: Partial<Error>
   required?: boolean
   type?: 'text' | 'number' | 'password' | 'login'
   onChange?: (newValue: string) => void
@@ -55,7 +56,7 @@ export const Input: FC<InputProps> = ({
     setShowPassword(prev => !prev)
   }
 
-  const inputClass = cn(s.input, className, { [s.error]: error })
+  const inputClass = cn(s.input, className, { [s.error]: error }, { [s.password]: type === 'password' }, { [s.big]: showPassword == false })
 
   return (
     <div className={s.wrapper}>
@@ -71,13 +72,18 @@ export const Input: FC<InputProps> = ({
         placeholder={placeholder}
         disabled={disabled}
       />
-      {/* {type === 'password' && (
+      {error && <div className={s.messageError}>{error.message}</div>}
+      {type === 'password' && (
         <EyeIcon
           className={s.eyeIcon}
-          isOpen={showPassword}
           onClick={toggleShowPassword}
         />
-      )} */}
+      )}
+      {type === 'login' && (
+        <LoginIcon
+          className={s.loginIcon}
+        />
+      )}
     </div>
   )
 }

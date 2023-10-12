@@ -4,39 +4,19 @@ import Link from 'next/link'
 
 import cn from 'classnames'
 import s from './AuthModal.module.scss'
-import { Input } from 'components'
-
-// export type InputProps = {
-//   onChange?: (newValue: string) => void
-//   initValue?: string | number
-// }
-
-// export const Input: FC<InputProps> = ({onChange, initValue = ''}) => {
-//   const [value, setValue] = useState(initValue)
-
-//   useEffect(() => {
-//     setValue(initValue)
-//   }, [initValue])
-
-
-//   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-//     const newValue = e.target.value
-//     onChange?.(newValue)
-//     setValue(newValue)
-//   }
-
-//   return <input type="text" value={value} onChange={handleChange} />
-// }
+import { Input, Modal } from 'components'
 
 interface AuthModalProps {
-  onCotinue: (email: string) => void
+  onCotinue: (login: string, password: string) => void
+  onClose: () => void
 }
 
 interface AuthModal {
-  email: string
+  login: string,
+  password: string
 }
 
-export const AuthModal: FC<AuthModalProps> = ({ onCotinue }) => {
+export const AuthModal: FC<AuthModalProps> = ({ onCotinue, onClose }) => {
   const {
     control,
     handleSubmit,
@@ -45,21 +25,36 @@ export const AuthModal: FC<AuthModalProps> = ({ onCotinue }) => {
 
 
   const onSubmit: SubmitHandler<AuthModal> = (formdata: AuthModal) => {
-    onCotinue(formdata.email)
+    onCotinue(formdata.login, formdata.password)
     console.log(formdata)
   }
 
-  return <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-    <Controller
-      name='email'
-      control={control}
-      rules={{
-        required: 'Email is required'
-      }}
-      render={({ field: { onChange, value } }) => (
-        <Input initValue={value} onChange={onChange} />
-      )}
-    />
-    <button>Log in</button>
-  </form>
+  return (
+    <>
+      <Modal onClose={onClose}>
+        <div onClick={e => e.stopPropagation()}>
+          <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+            <Controller
+              name='login'
+              control={control}
+              rules={{ required: 'login is required' }}
+              render={({ field: { onChange, value } }) => (
+                <Input initValue={value} onChange={onChange} type='login' error={errors.login} />
+              )}
+            />
+            <Controller
+              name='password'
+              control={control}
+              rules={{ required: 'password is required' }}
+              render={({ field: { onChange, value } }) => (
+                <Input initValue={value} onChange={onChange} type='password' error={errors.password} />
+              )}
+            />
+
+            <button>Log in</button>
+          </form>
+        </div>
+      </Modal>
+    </>
+  )
 }

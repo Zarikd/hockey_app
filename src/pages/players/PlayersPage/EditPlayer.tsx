@@ -3,7 +3,7 @@ import { updateEditableName } from '@/src/store/slices/players';
 import { deletePlayer, updatePlayer } from '@/src/store/thunks/players';
 import { FC } from 'react';
 import s from './PlayerPage.module.scss'
-import { Modal } from '@/src/components';
+import { Input, Modal } from '@/src/components';
 
 interface EditPlayerProps {
   isActive?: boolean
@@ -14,7 +14,7 @@ interface EditPlayerProps {
 export const EditPlayer: FC<EditPlayerProps> = ({
   isActive = true,
   data_uuid = '',
-  onClose
+  onClose,
 }) => {
   const dispatch = useAppDispatch()
   const editableName = useAppSelector(state => state.players.editableName)
@@ -22,8 +22,8 @@ export const EditPlayer: FC<EditPlayerProps> = ({
   const _updatePlayer = () => {
     dispatch(updatePlayer())
   }
-  const _updateEditableName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(updateEditableName(e.target.value))
+  const _updateEditableName = (newValue: string) => {
+    dispatch(updateEditableName(newValue))
   }
   const _deletePlayer = () => {
     const uuidDeletedPlayer = uuidPlayer
@@ -37,7 +37,7 @@ export const EditPlayer: FC<EditPlayerProps> = ({
         <div className={s.editModal} onClick={e => e.stopPropagation()}>
           <button onClick={_deletePlayer}>Delete</button>
           <div>
-            <input value={editableName} onChange={_updateEditableName} />
+            <Input initValue={editableName} onChange={_updateEditableName} />
             <button onClick={_updatePlayer}>update Player</button>
           </div>
         </div>

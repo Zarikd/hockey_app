@@ -23,9 +23,8 @@ export const PlayersPage = () => {
     <div>
       <PlayersTable isEditPlayerActive={setActiveHandle} />
       <AddPlayer />
-      {isActive ?
-        <EditPlayer onClose={() => { setActive(false) }} /> :
-        <></>}
+      {isActive &&
+        <EditPlayer onClose={() => { setActive(false) }} />}
     </div>
   )
 }
