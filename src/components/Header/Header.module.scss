@@ -1,11 +1,18 @@
 .headerWrapper {
-    height: auto;
+    height: 57px;
+    display: flex;
+    align-items: center;
+    padding: 45px 40px 36px 40px;
+    background: linear-gradient(180deg, #011E30 66.67%, rgba(255, 255, 255, 0.00) 97.59%);
+}
+
+.contentWrapper {
+    width: 100%;
+    height: 32px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 45px;
-    margin-bottom: 36px;
-    padding: 0 40px;
+    padding: 8px 0 16px 0;
 }
 
 .dropMenu  {

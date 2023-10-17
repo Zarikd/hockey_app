@@ -37,15 +37,15 @@ export const Header: FC<HeaderProps> = (
 
   return (
     <div className={headerClass}>
-      <Gamburger onClick={setModalHandler} />
-      <Auth onClick={setAuthModalHandler} />
-      {isModalActive &&
-        <div className={s.dropMenu}>
-          List of menu
-        </div>
-      }
-      {isAuthModalActive &&
-        <AuthModal onCotinue={continueWithEmail} onClose={() => setAuthModal(false)} />
-      }
+      <div className={s.contentWrapper}>
+        <Gamburger onClick={setModalHandler} />
+        <Auth onClick={setAuthModalHandler} />
+        {isModalActive &&
+          <div className={s.dropMenu}>
+            List of menu
+          </div>
+        }
+        <AuthModal onCotinue={continueWithEmail} onClose={() => setAuthModal(false)} isActive={isAuthModalActive} setActive={setAuthModalHandler} />
+      </div>
     </div>);
 };

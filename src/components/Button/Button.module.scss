@@ -1,0 +1,30 @@
+@use '../../style/style.scss' as *;
+
+.button {
+  @include buttonText;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+  height: 40px;
+  border-radius: 7px;
+  margin: 0;
+
+  text-align: center;
+  color: $color-white;
+  background-color: $color-deep-blue;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 2px 5px 4px 0px rgba(255, 255, 255, 0.24) inset;
+  transition: all 200ms ease-out;
+}
+
+.standart {
+  &:hover{
+    box-shadow: none;
+  }
+  &:active{
+    box-shadow: none;
+    transform: scale(0.95);
+  }
+}

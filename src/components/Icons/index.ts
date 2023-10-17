@@ -1,3 +1,4 @@
+import { CrossIcon } from './СrossIcon/CrossIcon';
 import { Auth } from './Auth/Auth';
 import { Gamburger } from './Gamburger/Gamburger';
 import { EyeIcon } from './EyeIcon/EyeIcon';
@@ -9,4 +10,5 @@ export {
   Auth,
   EyeIcon,
   LoginIcon,
+  CrossIcon
 }

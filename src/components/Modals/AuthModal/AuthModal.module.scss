@@ -1,9 +1,33 @@
+@use '../../../style/style.scss' as *;
+
+
+.contentWrapper{
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: $color-white;
+  opacity: 0;
+  transition: all 1s ease;
+  transform: translateY(-100%);
+  z-index: 10;
+}
+
+.contentShow{
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+
+  // transition: opacity 5s ease;
+}
+
 .form {
   width: 50vw;
   height: 50vh;
-  position: absolute;
-  top: 25vh;
-  left: 25vw;
   background-color: aqua;
   border-radius: 8px;
   display: flex;
@@ -11,4 +35,10 @@
   align-items: center;
   gap: 2rem;
   justify-content: center;
+}
+
+.cross {
+  position: absolute;
+  top: 40px;
+  right: 40px;
 }

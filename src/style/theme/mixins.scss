@@ -5,3 +5,10 @@
   font-weight: $fw-regular;
   color: $color-darkGrey;
 }
+
+@mixin buttonText {
+  font-family: $font-RubikMonoOne;
+  font-size: 16px;
+  font-weight: $fw-regular;
+  color: $color-white;
+}
