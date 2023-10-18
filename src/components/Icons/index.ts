@@ -3,6 +3,7 @@ import { Auth } from './Auth/Auth';
 import { Gamburger } from './Gamburger/Gamburger';
 import { EyeIcon } from './EyeIcon/EyeIcon';
 import { LoginIcon } from './LoginIcon/LoginIcon';
+import { AuthLogo } from './AuthLogo/AuthLogo';
 
 
 export {
@@ -10,5 +11,6 @@ export {
   Auth,
   EyeIcon,
   LoginIcon,
-  CrossIcon
+  CrossIcon,
+  AuthLogo
 }

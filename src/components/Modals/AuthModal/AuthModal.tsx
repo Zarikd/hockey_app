@@ -6,7 +6,7 @@ import cn from 'classnames'
 import s from './AuthModal.module.scss'
 import { Input, Modal } from 'components'
 import { Button } from '../../Button/Button'
-import { CrossIcon } from '../../Icons'
+import { AuthLogo, CrossIcon } from '../../Icons'
 
 interface AuthModalProps {
   onCotinue: (login: string, password: string) => void
@@ -38,6 +38,8 @@ export const AuthModal: FC<AuthModalProps> = ({ onCotinue, onClose, isActive, se
       {/* <Modal onClose={onClose} isCross={true} className={cn(!isActive && s.modalWrapper)}> */}
       <div className={cn(s.contentWrapper, isActive && s.contentShow)}>
         <CrossIcon onClick={setActive} className={s.cross} />
+        <AuthLogo className={s.logoStyle} />
+        <div className={s.lable}>Войти <p>в личный кабинет</p></div>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
           <Controller
             name='login'
@@ -47,16 +49,20 @@ export const AuthModal: FC<AuthModalProps> = ({ onCotinue, onClose, isActive, se
               <Input initValue={value} onChange={onChange} type='login' error={errors.login} />
             )}
           />
-          <Controller
-            name='password'
-            control={control}
-            rules={{ required: 'password is required' }}
-            render={({ field: { onChange, value } }) => (
-              <Input initValue={value} onChange={onChange} type='password' error={errors.password} />
-            )}
-          />
-          <Button type='submit'>Log in</Button>
+          <div>
+            <Controller
+              name='password'
+              control={control}
+              rules={{ required: 'password is required' }}
+              render={({ field: { onChange, value } }) => (
+                <Input initValue={value} onChange={onChange} type='password' error={errors.password} />
+              )}
+            />
+            <div className={s.forgotPass}>Забыли пароль?</div>
+          </div>
+          <Button type='submit'>Войти</Button>
         </form>
+        <div><Button>Регистрация</Button></div>
       </div>
       {/* </Modal> */}
     </>

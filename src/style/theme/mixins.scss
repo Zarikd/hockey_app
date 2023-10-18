@@ -12,3 +12,19 @@
   font-weight: $fw-regular;
   color: $color-white;
 }
+
+@mixin h1Text {
+  font-family: $font-RubikMonoOne;
+  font-size: 22px;
+  line-height: 27px;
+  font-weight: $fw-regular;
+  color: $color-deep-blue;
+}
+
+@mixin secondaryText {
+  font-family: $font-Montserrat;
+  font-size: 8px;
+  line-height: 10px;
+  color: $color-darkGrey;
+  font-weight: $fw-regular;
+}
