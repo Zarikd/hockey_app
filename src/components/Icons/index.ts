@@ -4,6 +4,9 @@ import { Gamburger } from './Gamburger/Gamburger';
 import { EyeIcon } from './EyeIcon/EyeIcon';
 import { LoginIcon } from './LoginIcon/LoginIcon';
 import { AuthLogo } from './AuthLogo/AuthLogo';
+import { Helm } from './Helm/Helm';
+import { Sticks } from './Sticks/Sticks';
+import { Jarcy } from './Jarcy/Jarcy';
 
 
 export {
@@ -12,5 +15,8 @@ export {
   EyeIcon,
   LoginIcon,
   CrossIcon,
-  AuthLogo
+  AuthLogo,
+  Helm,
+  Sticks,
+  Jarcy
 }

@@ -5,6 +5,7 @@ import cn from 'classnames'
 import { AuthModal } from '../Modals';
 import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
 import { setAuth, setLogin } from '@/src/store/slices/auth';
+import { MainMenu } from '../MainMenu';
 
 interface HeaderProps {
   className?: string
@@ -40,11 +41,7 @@ export const Header: FC<HeaderProps> = (
       <div className={s.contentWrapper}>
         <Gamburger onClick={setModalHandler} />
         <Auth onClick={setAuthModalHandler} />
-        {isModalActive &&
-          <div className={s.dropMenu}>
-            List of menu
-          </div>
-        }
+        <MainMenu onClose={() => setModal(false)} isActive={isModalActive} setActive={setModalHandler} />
         <AuthModal onCotinue={continueWithEmail} onClose={() => setAuthModal(false)} isActive={isAuthModalActive} setActive={setAuthModalHandler} />
       </div>
     </div>);

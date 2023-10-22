@@ -5,19 +5,19 @@ import s from './AuthLogo.module.scss'
 
 
 export const AuthLogo: FC<IconProps> = ({
-  size = 103,
+  sizeW = 103,
+  sizeH = 80,
   className,
   active = true,
   onClick,
 }) => {
-  const sizeH = size - 23
   return (
     <span
-      style={size ? { height: sizeH } : {}}
+      style={sizeW ? { height: sizeH } : {}}
       className={cn(s.icon, className)}
       onClick={onClick}
     >
-      <svg xmlns="http://www.w3.org/2000/svg" width={size} height={sizeH} viewBox="0 0 104 80" fill="none">
+      <svg xmlns="http://www.w3.org/2000/svg" width={sizeW} height={sizeH} viewBox="0 0 104 80" fill="none">
         <path d="M76.7756 11.811C76.9742 11.9427 77.0404 12.2721 76.8418 12.4698L70.1577 21.2978C70.0253 21.4954 69.6944 21.5613 69.4959 21.3636C69.2973 21.2319 69.2312 20.9025 69.4297 20.7048L76.1138 11.8768C76.3124 11.7451 76.5771 11.6792 76.7756 11.811Z" fill="#E54D42" />
         <path d="M51.2302 27.0285L52.1567 25.5791L48.5168 24.0638L47.9212 25.1179L47.6565 25.5132L51.2302 27.0285Z" fill="#011E30" />
         <path d="M36.7369 43.3688L36.0089 44.4887L35.8104 44.8181L39.4502 46.3334L40.112 45.2134L40.3106 44.884L36.7369 43.3688Z" fill="#011E30" />
