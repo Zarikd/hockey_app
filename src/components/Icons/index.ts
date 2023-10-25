@@ -7,6 +7,7 @@ import { AuthLogo } from './AuthLogo/AuthLogo';
 import { Helm } from './Helm/Helm';
 import { Sticks } from './Sticks/Sticks';
 import { Jarcy } from './Jarcy/Jarcy';
+import { Logo } from './Logo/Logo';
 
 
 export {
@@ -18,5 +19,6 @@ export {
   AuthLogo,
   Helm,
   Sticks,
-  Jarcy
+  Jarcy,
+  Logo
 }

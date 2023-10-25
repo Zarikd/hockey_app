@@ -5,6 +5,8 @@ import { EditPlayer } from './EditPlayer';
 import { PlayersTable } from './PlayersTable';
 import { fetchPlayers } from '@/src/store/thunks/players';
 import { FC, useState } from 'react';
+import { Jarcy } from '@/src/components/Icons';
+import s from './PlayerPage.module.scss'
 
 export const PlayersPage = () => {
 
@@ -21,6 +23,7 @@ export const PlayersPage = () => {
 
   return (
     <div>
+      <div className={s.jarcy}><Jarcy variant={'white'} />состав</div>
       <PlayersTable isEditPlayerActive={setActiveHandle} />
       <AddPlayer />
       {isActive &&

@@ -1,11 +1,12 @@
 import { FC, useState } from 'react';
 import s from './Header.module.scss';
-import { Auth, Gamburger } from '../Icons';
+import { Auth, Gamburger, Logo } from '../Icons';
 import cn from 'classnames'
 import { AuthModal } from '../Modals';
 import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
 import { setAuth, setLogin } from '@/src/store/slices/auth';
 import { MainMenu } from '../MainMenu';
+import { usePathname } from 'next/navigation';
 
 interface HeaderProps {
   className?: string
@@ -34,12 +35,13 @@ export const Header: FC<HeaderProps> = (
     dispatch(setLogin(email))
   }
 
-  const handleContinue = () => { }
+  const path = usePathname()
 
   return (
     <div className={headerClass}>
       <div className={s.contentWrapper}>
         <Gamburger onClick={setModalHandler} />
+        {path !== '/' && <Logo />}
         <Auth onClick={setAuthModalHandler} />
         <MainMenu onClose={() => setModal(false)} isActive={isModalActive} setActive={setModalHandler} />
         <AuthModal onCotinue={continueWithEmail} onClose={() => setAuthModal(false)} isActive={isAuthModalActive} setActive={setAuthModalHandler} />
