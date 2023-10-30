@@ -1,3 +1,4 @@
+import { Player } from '../slices/players';
 import createAppAsyncThunk from './createAppAsyncThunk'
 import * as api from 'api'
 
@@ -39,6 +40,18 @@ export const updatePlayer = createAppAsyncThunk(
     const uuid: string = thunkAPI.getState().players.editableUuid;
     const playerName: string = thunkAPI.getState().players.editableName;
     const isUpdated: boolean = await api.players.updatePlayer(uuid, playerName)
+
+    if (!isUpdated) {
+      console.error('Player was not updated')
+    }
+
+    await thunkAPI.dispatch(fetchPlayers())
+  })
+
+export const savePlayer = createAppAsyncThunk(
+  'players/update',
+  async (player: Player, thunkAPI) => {
+    const isUpdated: boolean = await api.players.savePlayer(player)
 
     if (!isUpdated) {
       console.error('Player was not updated')

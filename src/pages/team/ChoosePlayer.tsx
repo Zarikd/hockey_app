@@ -1,39 +1,52 @@
 import { Modal } from '@/src/components'
-import { useAppSelector } from '@/src/shared/hooks/redux';
-import { FC, useState } from 'react';
+import { Button } from '@/src/components/Button/Button';
+import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
+import { Player } from '@/src/store/slices/players';
+import { fetchPlayers } from '@/src/store/thunks/players';
+import { FC, useEffect, useState } from 'react';
 import Select from 'react-select';
 
 
 interface ChoosePlayerProps {
   onClose: () => void
+  onPlayerChoosed: (player: Player | undefined) => void
+  players: Player[]
 }
 
 
-type searchPlayers = {
+type playerOptions = {
   label: string
-  value: number
+  value: string
 }
 
-export const ChoosePlayer: FC<ChoosePlayerProps> = ({ onClose }) => {
+export const ChoosePlayer: FC<ChoosePlayerProps> = ({ onClose, onPlayerChoosed, players }) => {
+
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(fetchPlayers())
+  }, [dispatch])
 
 
-  const players = useAppSelector(state => state.players.playersList)
+  const listOptions = players.map((item) => { return { label: item.playerData.playerName, value: item.uuidPlayer, } })
 
-  const searchPlayers = players.map((item, index) => { return { label: item.playerData.playerName, value: index + 1, } })
+  const [choosedPlayer, setChoosedPlayer] = useState<playerOptions | null>();
 
-  const [items, setItems] = useState<searchPlayers | null>();
-
-  console.log(searchPlayers);
-
-  const handleOption = (selections: searchPlayers | null) => {
-    setItems(selections);
+  const handleOption = (choosedPlayer: playerOptions | null) => {
+    setChoosedPlayer(choosedPlayer);
   };
+
+  const _onPlayerChoosed = () => {
+    const player: Player | undefined = players.find(p => p.uuidPlayer === choosedPlayer?.value)
+    onPlayerChoosed(player);
+    onClose()
+  }
 
   return (
     <Modal onClose={onClose}>
       <div onClick={e => e.stopPropagation()}>
-        <Select options={searchPlayers} onChange={handleOption} />
+        <Select options={listOptions} onChange={handleOption} />
+        <Button onClick={_onPlayerChoosed}>Выбрать</Button>
       </div>
-    </Modal>
+    </Modal >
   )
 }

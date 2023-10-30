@@ -38,3 +38,14 @@ export const updatePlayer = async (uuid: string, playerName: string): Promise<bo
   })
   return response.status === 200
 }
+
+export const savePlayer = async (player: Player): Promise<boolean> => {
+  const response = await fetch(`/api/players/${player.uuidPlayer}`, {
+    method: 'PUT',
+    body: JSON.stringify(player.playerData),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  return response.status === 200
+}

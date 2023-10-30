@@ -20,7 +20,7 @@ const PUT = async function (req: NextApiRequest, res: NextApiResponse) {
     const query = `UPDATE "testTable"
       SET "playerData"= $1
       WHERE "uuidPlayer"=$2;`
-    const result = await conn.query(query, [{ playerName: req.body.playerName }, uuid]);
+    const result = await conn.query(query, [req.body, uuid]);
     res.status(200).json({ ok: true })
   } catch (e) {
     console.log(e)

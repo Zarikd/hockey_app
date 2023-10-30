@@ -6,12 +6,15 @@ import s from './Button.module.scss'
 interface ButtonProps {
   children: ReactNode
   type?: 'button' | 'reset' | 'submit'
+  id?: string | undefined
   variant?:
   | 'standart'
   | 'primary'
   className?: string
-  onClick?: () => void
+  onClick?: (e: any) => void
   isDisabled?: boolean
+  onDoubleClick?: (e: any) => void
+
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -20,7 +23,9 @@ export const Button: FC<ButtonProps> = ({
   variant = 'standart',
   className,
   onClick,
-  isDisabled = false
+  isDisabled = false,
+  id,
+  onDoubleClick
 }) => {
 
   const buttonClass = cn(s.button, s[variant], className, {
@@ -33,6 +38,8 @@ export const Button: FC<ButtonProps> = ({
       type={type}
       onClick={onClick}
       disabled={isDisabled}
+      id={id}
+      onDoubleClick={onDoubleClick}
     >
       {children}
     </button>

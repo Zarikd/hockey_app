@@ -15,7 +15,8 @@ export type Player = {
 }
 
 export type PlayerData = {
-  playerName: string
+  playerName: string,
+  gamePosition: string
 }
 
 
