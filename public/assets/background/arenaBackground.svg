@@ -1,0 +1,29 @@
+
+<svg width="358" height="459" viewBox="0 0 358 459" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.5 167.5H356.5V409C356.5 435.786 334.786 457.5 308 457.5H50C23.2142 457.5 1.5 435.786 1.5 409V167.5Z" stroke="#011E30" stroke-width="3"/>
+<path d="M164.22 367.247H195.422V376.479C195.422 379.241 193.183 381.479 190.422 381.479H169.22C166.459 381.479 164.22 379.241 164.22 376.479V367.247Z" fill="#011E30"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M355 369H3V367H355V369Z" fill="#ED1C24"/>
+<path d="M322.514 303.762C322.514 331.995 298.735 354.946 269.321 354.946C239.908 354.946 216.129 331.995 216.129 303.762C216.129 275.529 239.908 252.577 269.321 252.577C298.735 252.577 322.514 275.529 322.514 303.762Z" stroke="#ED1C24" stroke-width="2"/>
+<line x1="202" y1="296.436" x2="216.78" y2="296.436" stroke="#ED1C24" stroke-width="2"/>
+<line x1="322" y1="296.436" x2="336.78" y2="296.436" stroke="#ED1C24" stroke-width="2"/>
+<line x1="202" y1="310.668" x2="216.78" y2="310.668" stroke="#ED1C24" stroke-width="2"/>
+<line x1="322" y1="310.668" x2="336.78" y2="310.668" stroke="#ED1C24" stroke-width="2"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M264.835 294.042V281.623H266.998V296.202H256.184V294.042H264.835Z" fill="#ED1C24"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M273.487 294.042V281.623H271.324V296.202H282.139V294.042H273.487Z" fill="#ED1C24"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M264.835 311.9V324.319H266.998V309.74H256.184V311.9H264.835Z" fill="#ED1C24"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M273.487 311.9V324.319H271.324V309.74H282.139V311.9H273.487Z" fill="#ED1C24"/>
+<ellipse cx="269.161" cy="303.492" rx="4.3258" ry="4.16548" fill="#ED1C24"/>
+<path d="M141.872 303.762C141.872 331.995 118.092 354.946 88.6789 354.946C59.2655 354.946 35.4863 331.995 35.4863 303.762C35.4863 275.529 59.2655 252.577 88.6789 252.577C118.092 252.577 141.872 275.529 141.872 303.762Z" stroke="#ED1C24" stroke-width="2"/>
+<line x1="22" y1="296.436" x2="36.7798" y2="296.436" stroke="#ED1C24" stroke-width="2"/>
+<line x1="142" y1="296.436" x2="156.78" y2="296.436" stroke="#ED1C24" stroke-width="2"/>
+<line x1="22" y1="310.668" x2="36.7798" y2="310.668" stroke="#ED1C24" stroke-width="2"/>
+<line x1="142" y1="310.668" x2="156.78" y2="310.668" stroke="#ED1C24" stroke-width="2"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M84.1929 294.042V281.623H86.3558V296.202H75.5413V294.042H84.1929Z" fill="#ED1C24"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M92.8444 294.042V281.623H90.6815V296.202H101.496V294.042H92.8444Z" fill="#ED1C24"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M84.1929 311.9V324.319H86.3558V309.74H75.5413V311.9H84.1929Z" fill="#ED1C24"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M92.8444 311.9V324.319H90.6815V309.74H101.496V311.9H92.8444Z" fill="#ED1C24"/>
+<ellipse cx="88.5188" cy="303.492" rx="4.3258" ry="4.16548" fill="#ED1C24"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M355 170H3V166H355V170Z" fill="#1A65A5"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M3 -1.74583e-07L3.00001 175L0 175L-5.74577e-06 0L3 -1.74583e-07Z" fill="#011E30"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M358 -1.74583e-07L358 175L355 175L355 0L358 -1.74583e-07Z" fill="#011E30"/>
+</svg>

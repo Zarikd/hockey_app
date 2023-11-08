@@ -8,6 +8,7 @@ import { Helm } from './Helm/Helm';
 import { Sticks } from './Sticks/Sticks';
 import { Jarcy } from './Jarcy/Jarcy';
 import { Logo } from './Logo/Logo';
+import { Arrow } from './Arrow/Arrow'
 
 
 export {
@@ -20,5 +21,6 @@ export {
   Helm,
   Sticks,
   Jarcy,
-  Logo
+  Logo,
+  Arrow
 }

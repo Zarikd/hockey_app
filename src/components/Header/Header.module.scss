@@ -1,9 +1,11 @@
 .headerWrapper {
+    position: relative;
     height: 57px;
     display: flex;
     align-items: center;
     padding: 45px 40px 36px 40px;
     background: linear-gradient(180deg, #011E30 66.67%, rgba(255, 255, 255, 0.00) 97.59%);
+    z-index: 10;
 }
 
 .contentWrapper {

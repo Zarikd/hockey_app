@@ -9,7 +9,7 @@ interface ButtonProps {
   id?: string | undefined
   variant?:
   | 'standart'
-  | 'primary'
+  | 'teammate'
   className?: string
   onClick?: (e: any) => void
   isDisabled?: boolean

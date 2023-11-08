@@ -30,7 +30,6 @@ export const PlayersTable: FC<PlayersTableProps> = ({ isEditPlayerActive }) => {
   const allPlayersUI = players.map((item, index) => (
     <li key={index}>
       {item.playerData.playerName}
-      {/* <button data-uuid={item.uuidPlayer} onClick={_deletePlayer}>Delete</button> */}
       <button data-uuid={item.uuidPlayer} onClick={_edditPlayer}>Edit</button>
       <span>{item.uuidPlayer}</span>
     </li>
