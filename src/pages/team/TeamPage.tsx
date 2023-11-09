@@ -1,11 +1,11 @@
-import { Button } from '@/src/components/Button/Button';
-import { FC, useEffect, useState } from 'react';
+import { FC, use, useEffect, useState } from 'react';
 import { ChoosePlayer } from './ChoosePlayer';
 import { fetchPlayers, savePlayer } from '@/src/store/thunks/players';
 import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
 import { Player } from '@/src/store/slices/players';
 import { TeamMate } from './TeamMate';
 import s from './Team.module.scss'
+import cn from 'classnames'
 import { Arrow, Sticks } from '@/src/components/Icons';
 
 
@@ -20,6 +20,7 @@ export const TeamPage = () => {
   const [isChooseActive, setChooseActive] = useState<boolean>(false)
   const [gamePosition, setGamePosition] = useState<string>('')
   const [chainNumber, setChNum] = useState<string>('1')
+  const [visible, setVisible] = useState<boolean>(false)
 
   const handleSetGamePosition = (e: any) => {
     setGamePosition(e.target.id)
@@ -80,6 +81,13 @@ export const TeamPage = () => {
     teammates.push(teammate)
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      setVisible(true)
+    }, 200)
+    return setVisible(false)
+  }, [chainNumber])
+  const teammatesWrap = cn(s.teammatesWrapper, { [s.visible]: visible })
 
   return (
     <div className={s.teamPageWrapper}>
@@ -89,7 +97,7 @@ export const TeamPage = () => {
           <Arrow variant={'left'} onClick={toogleChainLeft} />
           <Arrow onClick={toogleChainRight} />
         </div>
-        <div className={s.teammatesWrapper}>
+        <div className={teammatesWrap}>
           {teammates}
         </div>
       </div>
