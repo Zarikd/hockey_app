@@ -4,9 +4,10 @@ import Link from 'next/link'
 
 import cn from 'classnames'
 import s from './AuthModal.module.scss'
-import { Input, Modal } from 'components'
+import { Input } from 'components'
 import { Button } from '../../Button/Button'
 import { AuthLogo, CrossIcon } from '../../Icons'
+import { RegisterModal } from './RegisterModal'
 
 interface AuthModalProps {
   onCotinue: (login: string, password: string) => void
@@ -30,12 +31,12 @@ export const AuthModal: FC<AuthModalProps> = ({ onCotinue, onClose, isActive, se
 
   const onSubmit: SubmitHandler<AuthModal> = (formdata: AuthModal) => {
     onCotinue(formdata.login, formdata.password)
-    console.log(formdata)
   }
+
+  const [isRegister, setRegister] = useState<boolean>(false)
 
   return (
     <>
-      {/* <Modal onClose={onClose} isCross={true} className={cn(!isActive && s.modalWrapper)}> */}
       <div className={cn(s.contentWrapper, isActive && s.contentShow)}>
         <CrossIcon onClick={setActive} className={s.cross} />
         <AuthLogo className={s.logoStyle} />
@@ -62,9 +63,9 @@ export const AuthModal: FC<AuthModalProps> = ({ onCotinue, onClose, isActive, se
           </div>
           <Button type='submit'>Войти</Button>
         </form>
-        <div><Button>Регистрация</Button></div>
+        <div><Button onClick={() => setRegister(true)}>Регистрация</Button></div>
+        {isRegister && <RegisterModal onCotinue={onCotinue} onClose={() => setRegister(false)} isActive={isRegister} />}
       </div>
-      {/* </Modal> */}
     </>
   )
 }
