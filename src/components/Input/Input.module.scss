@@ -53,6 +53,7 @@
     background-color: $color-grey !important;
   }
   &::placeholder {
+    @include placeholder;
     color: $color-deep-blue;
   }
 }

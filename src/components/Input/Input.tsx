@@ -16,7 +16,7 @@ export type InputProps = {
   placeholder?: string
   error?: Partial<Error>
   required?: boolean
-  type?: 'text' | 'number' | 'password' | 'login'
+  type?: 'text' | 'number' | 'password' | 'login' | 'email' | 'date'
   onChange?: (newValue: string) => void
   name?: string
   ref?: HTMLInputElement | null
@@ -80,6 +80,11 @@ export const Input: FC<InputProps> = ({
         />
       )}
       {type === 'login' && (
+        <LoginIcon
+          className={s.loginIcon}
+        />
+      )}
+      {type === 'email' && (
         <LoginIcon
           className={s.loginIcon}
         />

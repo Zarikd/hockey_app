@@ -9,61 +9,96 @@ import { Button } from '../../../Button/Button'
 import { AuthLogo, CrossIcon } from '../../../Icons'
 
 interface RegisterModalProps {
-  onCotinue: (login: string, password: string, firstName: string, secondName: string, dateBirth: Date | null) => void
+  onCotinue: (email: string, password: string, reapetedPassword: string, firstName: string, secondName: string, dateBirth: string) => void
   onClose: () => void,
   isActive: boolean
   setActive?: () => void
 }
 
 interface RegisterModal {
-  login: string,
+  email: string,
   password: string,
+  reapetedPassword: string,
   firstName: string,
   secondName: string,
-  dateBirth: Date | null
+  dateBirth: string
 }
 
 export const RegisterModal: FC<RegisterModalProps> = ({ onCotinue, onClose, isActive, setActive }) => {
   const {
     control,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
+    getValues
   } = useForm<RegisterModal>()
 
 
   const onSubmit: SubmitHandler<RegisterModal> = (formdata: RegisterModal) => {
-    onCotinue(formdata.login, formdata.password, formdata.firstName, formdata.secondName, formdata.dateBirth)
+    onCotinue(formdata.email, formdata.password, formdata.reapetedPassword, formdata.firstName, formdata.secondName, formdata.dateBirth)
+    console.log(formdata)
   }
 
   return (
     <>
       <Modal onClose={onClose} isCross>
-        <div className={cn(s.contentRegWrapper, isActive && s.contentShow)} onClick={e => e.stopPropagation()}>
+        <div className={cn(s.contentRegWrapper)} onClick={e => e.stopPropagation()}>
           <AuthLogo className={s.logoStyle} />
-          <div className={s.lable}>Войти <p>в личный кабинет</p></div>
+          <div className={s.lable}>Регистрация <p>личного кабинета</p></div>
           <form className={s.form} onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
             <Controller
-              name='login'
+              name='email'
               control={control}
-              rules={{ required: 'login is required' }}
+              rules={{ required: 'email is required' }}
               render={({ field: { onChange, value } }) => (
-                <Input initValue={value} onChange={onChange} type='login' error={errors.login} />
+                <Input initValue={value} onChange={onChange} type='email' placeholder='e-mail' error={errors.email} />
               )}
             />
-            <div>
-              <Controller
-                name='password'
-                control={control}
-                rules={{ required: 'password is required' }}
-                render={({ field: { onChange, value } }) => (
-                  <Input initValue={value} onChange={onChange} type='password' error={errors.password} />
-                )}
-              />
-              <div className={s.forgotPass}>Забыли пароль?</div>
-            </div>
-            <Button type='submit'>Войти</Button>
+            <Controller
+              name='password'
+              control={control}
+              rules={{ required: 'password is required' }}
+              render={({ field: { onChange, value } }) => (
+                <Input initValue={value} onChange={onChange} type='password' placeholder='пароль' error={errors.password} />
+              )}
+            />
+            <Controller
+              name='reapetedPassword'
+              control={control}
+              rules={{
+                required: 'password is required',
+                validate: value => value === getValues('password') || 'Password is not the same'
+              }}
+              render={({ field: { onChange, value } }) => (
+                <Input initValue={value} onChange={onChange} type='password' placeholder='повторный пароль' error={errors.reapetedPassword} />
+              )}
+            />
+            <Controller
+              name='firstName'
+              control={control}
+              rules={{ required: 'first name is required' }}
+              render={({ field: { onChange, value } }) => (
+                <Input initValue={value} onChange={onChange} type='text' placeholder='имя' error={errors.firstName} />
+              )}
+            />
+            <Controller
+              name='secondName'
+              control={control}
+              rules={{ required: 'second name is required' }}
+              render={({ field: { onChange, value } }) => (
+                <Input initValue={value} onChange={onChange} type='text' placeholder='фамилия' error={errors.secondName} />
+              )}
+            />
+            <Controller
+              name='dateBirth'
+              control={control}
+              rules={{ required: 'second name is required' }}
+              render={({ field: { onChange, value } }) => (
+                <Input initValue={value} onChange={onChange} type='date' placeholder='фамилия' error={errors.secondName} />
+              )}
+            />
+            <Button type='submit'>Регистрация</Button>
           </form>
-          <div><Button>Регистрация</Button></div>
+          <div>Уже есть аккаунт? <Link href={'/auth'}>Войти</Link></div>
         </div>
       </Modal>
     </>
