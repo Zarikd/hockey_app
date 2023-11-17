@@ -42,12 +42,13 @@
 
 .teamPageWrapper{
   width: auto;
-  height: 332px;
+  height: 342px;
+  background-color: $color-white;
 }
 .arena {
   width: 100%;
   height: 470px;
-  position: fixed;
+  position: absolute;
   top: 0;
   background: url('../../../public/assets/background/arenaBackground.png') center no-repeat;
   background-size: 90% 470px;
@@ -56,7 +57,7 @@
 
 .teammatesWrapper {
   position: absolute;
-  width: 100%;
+  width: 95%;
   top: 178px;
   left: 5%;
   display: grid;
@@ -78,4 +79,47 @@
     opacity: 1;
     transition: opacity 1s;
   }
+}
+.playerPanelWrapper{
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.playerPanelContent{ 
+  height: 42px;
+  padding: none;
+  padding-left: 26px;
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  border: 0.5px solid #000;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 1.99%, rgba(255, 255, 255, 0.00) 100%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(25px);
+  & .positionPanel {
+    justify-self: end;
+    position: relative;
+  }
+}
+
+.playerName{
+  @include buttonText;
+  font-size: 20px;
+  padding: none;
+  padding-left: 2px;
+  justify-self: start;
+  &.playerName p {
+    margin: none; 
+    padding: none;
+    font-size: 12px;
+  }
+}
+
+.positionPanel span{
+  position: absolute;
+  top: 12px;
+  left: 4px;
+  @include h3Text
 }

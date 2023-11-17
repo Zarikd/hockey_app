@@ -6,7 +6,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
   background: url('../../public/assets/background/IceBackground.png') no-repeat center center fixed;
   background-color: #011E30;
   background-size: cover;
@@ -33,3 +32,7 @@ a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
 a:hover { text-decoration: none; }
 a:active { text-decoration: none; }
+
+p {
+  margin: 0;
+ }

@@ -21,6 +21,15 @@
   color: $color-deep-blue;
 }
 
+@mixin h3Text {
+  font-family: $font-Montserrat;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: $fw-extrabold;
+  color: $color-white;
+}
+
+
 @mixin secondaryText {
   font-family: $font-Montserrat;
   font-size: 8px;

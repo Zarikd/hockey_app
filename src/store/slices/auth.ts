@@ -1,13 +1,15 @@
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export type AuthState = {
   isAuth: boolean,
-  email: string | null
+  email: string | null,
+  password: string | null
 }
 
 const initialState: AuthState = {
   isAuth: false,
-  email: null
+  email: null,
+  password: null
 }
 
 export const authSlice = createSlice({
@@ -19,10 +21,13 @@ export const authSlice = createSlice({
     },
     setLogin: (state, action: PayloadAction<string>) => {
       state.email = action.payload
+    },
+    setPassword: (state, action: PayloadAction<string>) => {
+      state.password = action.payload
     }
   }
 })
 
-export const {setAuth, setLogin} = authSlice.actions
+export const { setAuth, setLogin, setPassword } = authSlice.actions
 
 export default authSlice.reducer

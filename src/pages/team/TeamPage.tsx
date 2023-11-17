@@ -1,4 +1,4 @@
-import { FC, use, useEffect, useState } from 'react';
+import { FC, use, useEffect, useState, useLayoutEffect } from 'react';
 import { ChoosePlayer } from './ChoosePlayer';
 import { fetchPlayers, savePlayer } from '@/src/store/thunks/players';
 import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
@@ -7,6 +7,7 @@ import { TeamMate } from './TeamMate';
 import s from './Team.module.scss'
 import cn from 'classnames'
 import { Arrow, Sticks } from '@/src/components/Icons';
+import { PlayerPanel } from './PlayerPanel';
 
 
 export const TeamPage = () => {
@@ -81,7 +82,21 @@ export const TeamPage = () => {
     teammates.push(teammate)
   }
 
-  useEffect(() => {
+  const playerPanels = []
+
+  for (let i = 1; i < 7; i++) {
+    const player: Player | undefined = chainPlayers.find(p => p.playerData.gamePosition === i.toString())
+    let playerPanel;
+    if (player) {
+      playerPanel = <PlayerPanel firstName={player.playerData.playerName} Name={''} id={`${i}`} />
+    }
+    else {
+      playerPanel = <PlayerPanel firstName={'Пусто'} id={`${i}`} />
+    }
+    playerPanels.push(playerPanel)
+  }
+
+  useLayoutEffect(() => {
     setTimeout(() => {
       setVisible(true)
     }, 200)
@@ -90,24 +105,29 @@ export const TeamPage = () => {
   const teammatesWrap = cn(s.teammatesWrapper, { [s.visible]: visible })
 
   return (
-    <div className={s.teamPageWrapper}>
-      <div className={s.arena}>
-        <div className={s.sticks}><Sticks sizeW={34} sizeH={34} />{`Звено ${chainNumber}`}</div>
-        <div className={s.arrows}>
-          <Arrow variant={'left'} onClick={toogleChainLeft} />
-          <Arrow onClick={toogleChainRight} />
+    <>
+      <div className={s.teamPageWrapper}>
+        <div className={s.arena}>
+          <div className={s.sticks}><Sticks sizeW={34} sizeH={34} />{`Звено ${chainNumber}`}</div>
+          <div className={s.arrows}>
+            <Arrow variant={'left'} onClick={toogleChainLeft} />
+            <Arrow onClick={toogleChainRight} />
+          </div>
+          <div className={teammatesWrap}>
+            {teammates}
+          </div>
         </div>
-        <div className={teammatesWrap}>
-          {teammates}
-        </div>
+        {isChooseActive &&
+          <ChoosePlayer
+            onClose={() => setChooseActive(false)}
+            onPlayerChoosed={handleSetPlayer}
+            players={players.filter(p => !p.playerData.gamePosition)}
+          />}
       </div>
-      {isChooseActive &&
-        <ChoosePlayer
-          onClose={() => setChooseActive(false)}
-          onPlayerChoosed={handleSetPlayer}
-          players={players.filter(p => !p.playerData.gamePosition)}
-        />}
-    </div>
+      <div className={s.playerPanelWrapper}>
+        {playerPanels}
+      </div>
+    </>
   );
 }
 

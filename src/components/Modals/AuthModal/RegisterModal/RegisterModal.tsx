@@ -9,7 +9,7 @@ import { Button } from '../../../Button/Button'
 import { AuthLogo, CrossIcon } from '../../../Icons'
 
 interface RegisterModalProps {
-  onCotinue: (email: string, password: string, reapetedPassword: string, firstName: string, secondName: string, dateBirth: string) => void
+  onCotinue: (email: string, password: string, reapetedPassword: string, firstName: string, Name: string, dateBirth: string) => void
   onClose: () => void,
   isActive: boolean
   setActive?: () => void
@@ -20,7 +20,7 @@ interface RegisterModal {
   password: string,
   reapetedPassword: string,
   firstName: string,
-  secondName: string,
+  Name: string,
   dateBirth: string
 }
 
@@ -34,7 +34,7 @@ export const RegisterModal: FC<RegisterModalProps> = ({ onCotinue, onClose, isAc
 
 
   const onSubmit: SubmitHandler<RegisterModal> = (formdata: RegisterModal) => {
-    onCotinue(formdata.email, formdata.password, formdata.reapetedPassword, formdata.firstName, formdata.secondName, formdata.dateBirth)
+    onCotinue(formdata.email, formdata.password, formdata.reapetedPassword, formdata.firstName, formdata.Name, formdata.dateBirth)
     console.log(formdata)
   }
 
@@ -81,11 +81,11 @@ export const RegisterModal: FC<RegisterModalProps> = ({ onCotinue, onClose, isAc
               )}
             />
             <Controller
-              name='secondName'
+              name='Name'
               control={control}
               rules={{ required: 'second name is required' }}
               render={({ field: { onChange, value } }) => (
-                <Input initValue={value} onChange={onChange} type='text' placeholder='фамилия' error={errors.secondName} />
+                <Input initValue={value} onChange={onChange} type='text' placeholder='фамилия' error={errors.Name} />
               )}
             />
             <Controller
@@ -93,7 +93,7 @@ export const RegisterModal: FC<RegisterModalProps> = ({ onCotinue, onClose, isAc
               control={control}
               rules={{ required: 'second name is required' }}
               render={({ field: { onChange, value } }) => (
-                <Input initValue={value} onChange={onChange} type='date' placeholder='фамилия' error={errors.secondName} />
+                <Input initValue={value} onChange={onChange} type='date' placeholder='фамилия' error={errors.Name} />
               )}
             />
             <Button type='submit'>Регистрация</Button>

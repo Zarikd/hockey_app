@@ -4,7 +4,7 @@ import { Auth, Gamburger, Logo } from '../Icons';
 import cn from 'classnames'
 import { AuthModal } from '../Modals';
 import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
-import { setAuth, setLogin } from '@/src/store/slices/auth';
+import { setAuth, setLogin, setPassword } from '@/src/store/slices/auth';
 import { MainMenu } from '../MainMenu';
 import { usePathname } from 'next/navigation';
 
@@ -30,9 +30,10 @@ export const Header: FC<HeaderProps> = (
   // const [email, setEmail] = useState<string>('')
 
   const dispatch = useAppDispatch()
-  const continueWithEmail = (email: string) => {
+  const continueWithDataUser = (email: string, password: string) => {
     dispatch(setAuth())
     dispatch(setLogin(email))
+    dispatch(setPassword(password))
   }
 
   const path = usePathname()
@@ -44,7 +45,7 @@ export const Header: FC<HeaderProps> = (
         {path !== '/' && <Logo />}
         <Auth onClick={setAuthModalHandler} />
         <MainMenu onClose={() => setModal(false)} isActive={isModalActive} setActive={setModalHandler} />
-        <AuthModal onCotinue={continueWithEmail} onClose={() => setAuthModal(false)} isActive={isAuthModalActive} setActive={setAuthModalHandler} />
+        <AuthModal onCotinue={continueWithDataUser} onClose={() => setAuthModal(false)} isActive={isAuthModalActive} setActive={setAuthModalHandler} />
       </div>
     </div>);
 };
