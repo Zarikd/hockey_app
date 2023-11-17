@@ -110,6 +110,11 @@
   padding: none;
   padding-left: 2px;
   justify-self: start;
+  overflow: scroll;
+  max-width: 180px;
+  &.playerName::-webkit-scrollbar {
+    display: none;
+   }
   &.playerName p {
     margin: none; 
     padding: none;
