@@ -1,9 +1,9 @@
-import { Button } from '@/src/components/Button/Button';
+import { Button } from '@/components/Button/Button';
 import { FC, useEffect, useState } from 'react';
 import { ChoosePlayer } from './ChoosePlayer';
-import { fetchPlayers, savePlayer } from '@/src/store/thunks/players';
-import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
-import { Player } from '@/src/store/slices/players';
+import { fetchPlayers, savePlayer } from '@/store/thunks/players';
+import { useAppDispatch, useAppSelector } from '@/shared/hooks/redux';
+import { Player } from '@/store/slices/players';
 
 
 export const TeamPage = () => {

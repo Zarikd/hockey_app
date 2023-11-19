@@ -24,8 +24,8 @@ export const Logo: FC<IconProps> = ({
           <path d="M14.4535 3H9.73172H1.5V8.54447L9.73172 21.2716L24.5237 44.1215H33.3404H41.0707L33.3404 32.1925L14.4535 3Z" fill="#ED1C24" />
         </g>
         <defs>
-          <filter id="filter0_d_445_1837" x="0.5" y="-1" width="50" height="47.1215" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <filter id="filter0_d_445_1837" x="0.5" y="-1" width="50" height="47.1215" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dx="2" dy="-1" />
             <feGaussianBlur stdDeviation="1.5" />
