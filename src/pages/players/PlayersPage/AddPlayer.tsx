@@ -1,8 +1,8 @@
-import { Input } from '@/src/components';
-import { Button } from '@/src/components/Button/Button';
-import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
-import { updatePlayerName } from '@/src/store/slices/players';
-import { addPlayer } from '@/src/store/thunks/players';
+import { Input } from '@/components';
+import { Button } from '@/components/Button/Button';
+import { useAppDispatch, useAppSelector } from '@/shared/hooks/redux';
+import { updatePlayerName } from '@/store/slices/players';
+import { addPlayer } from '@/store/thunks/players';
 
 export const AddPlayer = () => {
 

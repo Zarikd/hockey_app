@@ -1,6 +1,6 @@
-import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
-import { updateEditableUuid } from '@/src/store/slices/players';
-import { deletePlayer } from '@/src/store/thunks/players';
+import { useAppDispatch, useAppSelector } from '@/shared/hooks/redux';
+import { updateEditableUuid } from '@/store/slices/players';
+import { deletePlayer } from '@/store/thunks/players';
 import { FC } from 'react';
 
 interface PlayersTableProps {

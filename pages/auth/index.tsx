@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { AuthModal } from '@/src/components'
+import { AuthModal } from '@/components'
 
 const Auth: NextPage = () => <AuthModal onCotinue={() => { }} onClose={() => { }} setActive={() => { }} isActive={true} />
 
