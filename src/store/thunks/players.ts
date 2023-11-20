@@ -1,6 +1,6 @@
 import { Player } from '../slices/players';
 import createAppAsyncThunk from './createAppAsyncThunk'
-import * as api from 'api'
+import * as api from '@/api'
 
 
 export const fetchPlayers = createAppAsyncThunk(

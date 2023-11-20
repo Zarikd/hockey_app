@@ -4,9 +4,11 @@ import Link from 'next/link'
 
 import cn from 'classnames'
 import s from './RegisterModal.module.scss'
-import { Input, Modal } from 'components'
+import { Input, Modal } from '@/components'
 import { Button } from '../../../Button/Button'
 import { AuthLogo, CrossIcon } from '../../../Icons'
+import * as api from '@/api'
+
 
 interface RegisterModalProps {
   onCotinue: (email: string, password: string, reapetedPassword: string, firstName: string, Name: string, dateBirth: string) => void
@@ -19,8 +21,8 @@ interface RegisterModal {
   email: string,
   password: string,
   reapetedPassword: string,
+  secondName: string,
   firstName: string,
-  Name: string,
   dateBirth: string
 }
 
@@ -33,10 +35,12 @@ export const RegisterModal: FC<RegisterModalProps> = ({ onCotinue, onClose, isAc
   } = useForm<RegisterModal>()
 
 
-  const onSubmit: SubmitHandler<RegisterModal> = (formdata: RegisterModal) => {
-    onCotinue(formdata.email, formdata.password, formdata.reapetedPassword, formdata.firstName, formdata.Name, formdata.dateBirth)
+  const onSubmit: SubmitHandler<RegisterModal> = async (formdata: RegisterModal) => {
+    onCotinue(formdata.email, formdata.password, formdata.reapetedPassword, formdata.secondName, formdata.firstName, formdata.dateBirth)
     console.log(formdata)
+    await api.users.registerUser(formdata)
   }
+
 
   return (
     <>
@@ -81,11 +85,11 @@ export const RegisterModal: FC<RegisterModalProps> = ({ onCotinue, onClose, isAc
               )}
             />
             <Controller
-              name='Name'
+              name='secondName'
               control={control}
               rules={{ required: 'second name is required' }}
               render={({ field: { onChange, value } }) => (
-                <Input initValue={value} onChange={onChange} type='text' placeholder='фамилия' error={errors.Name} />
+                <Input initValue={value} onChange={onChange} type='text' placeholder='фамилия' error={errors.secondName} />
               )}
             />
             <Controller
@@ -93,7 +97,7 @@ export const RegisterModal: FC<RegisterModalProps> = ({ onCotinue, onClose, isAc
               control={control}
               rules={{ required: 'date is required' }}
               render={({ field: { onChange, value } }) => (
-                <Input initValue={value} onChange={onChange} type='date' error={errors.Name} />
+                <Input initValue={value} onChange={onChange} type='date' error={errors.dateBirth} />
               )}
             />
             <Button type='submit'>Регистрация</Button>

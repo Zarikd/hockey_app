@@ -27,7 +27,7 @@ export const PlayersTable: FC<PlayersTableProps> = ({ isEditPlayerActive }) => {
   //   else { return }
   // }
 
-  const allPlayersUI = players.map((item, index) => (
+  const allPlayersUI = players.map((item: any, index: any) => (
     <li key={index}>
       {item.playerData.playerName}
       <button data-uuid={item.uuidPlayer} onClick={_edditPlayer}>Edit</button>

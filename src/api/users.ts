@@ -6,10 +6,10 @@ import { Player } from '@/store/slices/players'
 //   return data
 // }
 
-export const addClient = async (email: string): Promise<boolean> => {
-  const response = await fetch('/api/client', {
+export const registerUser = async (user: object): Promise<boolean> => {
+  const response = await fetch('/api/users', {
     method: 'POST',
-    body: JSON.stringify({ email }),
+    body: JSON.stringify({ user }),
     headers: {
       'Content-Type': 'application/json'
     }

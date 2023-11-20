@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import cn from 'classnames'
 import s from './AuthModal.module.scss'
-import { Input } from 'components'
+import { Input } from '@/components'
 import { Button } from '../../Button/Button'
 import { AuthLogo, CrossIcon } from '../../Icons'
 import { RegisterModal } from './RegisterModal'
