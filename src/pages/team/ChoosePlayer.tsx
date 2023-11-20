@@ -1,8 +1,8 @@
-import { Modal } from '@/src/components'
-import { Button } from '@/src/components/Button/Button';
-import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
-import { Player } from '@/src/store/slices/players';
-import { fetchPlayers } from '@/src/store/thunks/players';
+import { Modal } from '@/components'
+import { Button } from '@/components/Button/Button';
+import { useAppDispatch, useAppSelector } from '@/shared/hooks/redux';
+import { Player } from '@/store/slices/players';
+import { fetchPlayers } from '@/store/thunks/players';
 import { FC, useEffect, useState } from 'react';
 import Select from 'react-select';
 

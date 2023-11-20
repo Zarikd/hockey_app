@@ -1,4 +1,4 @@
-import {store} from '@/src/store';
+import {store} from '@/store';
 import {Layout} from 'features';
 import type {AppProps} from 'next/app';
 import Head from 'next/head';
