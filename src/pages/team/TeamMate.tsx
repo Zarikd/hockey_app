@@ -2,7 +2,7 @@ import { FC, ReactNode, useState } from 'react'
 import cn from 'classnames'
 
 import s from './Team.module.scss'
-import { Button } from '@/src/components/Button/Button'
+import { Button } from '@/components/Button/Button'
 import Avatar from '../../../public/images/avatar.svg'
 import Image from 'next/image'
 

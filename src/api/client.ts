@@ -1,4 +1,4 @@
-import { Player } from '@/src/store/slices/players'
+import { Player } from '@/store/slices/players'
 
 // export const fetchPlayers = async (): Promise<Player[]> => {
 //   const response = await fetch('/api/players', { method: 'GET' })

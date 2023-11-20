@@ -1,11 +1,11 @@
-import {store} from '@/store';
-import {Layout} from 'features';
-import type {AppProps} from 'next/app';
+import { store } from '@/store';
+import { Layout } from '@/features';
+import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import '../src/style/global.scss'
 
-export default function App({Component, pageProps}: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
