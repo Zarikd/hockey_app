@@ -91,9 +91,9 @@ export const RegisterModal: FC<RegisterModalProps> = ({ onCotinue, onClose, isAc
             <Controller
               name='dateBirth'
               control={control}
-              rules={{ required: 'second name is required' }}
+              rules={{ required: 'date is required' }}
               render={({ field: { onChange, value } }) => (
-                <Input initValue={value} onChange={onChange} type='date' placeholder='фамилия' error={errors.Name} />
+                <Input initValue={value} onChange={onChange} type='date' error={errors.Name} />
               )}
             />
             <Button type='submit'>Регистрация</Button>
