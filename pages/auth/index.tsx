@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { AuthModal } from '@/src/components'
+import { AuthModal } from '@/components'
 import { useState } from 'react'
 
 const Auth: NextPage = () => {

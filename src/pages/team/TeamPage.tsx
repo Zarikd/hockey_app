@@ -1,12 +1,12 @@
 import { FC, use, useEffect, useState, useLayoutEffect } from 'react';
 import { ChoosePlayer } from './ChoosePlayer';
-import { fetchPlayers, savePlayer } from '@/src/store/thunks/players';
-import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
-import { Player } from '@/src/store/slices/players';
+import { fetchPlayers, savePlayer } from '@/store/thunks/players';
+import { useAppDispatch, useAppSelector } from '@/shared/hooks/redux';
+import { Player } from '@/store/slices/players';
 import { TeamMate } from './TeamMate';
 import s from './Team.module.scss'
 import cn from 'classnames'
-import { Arrow, Sticks } from '@/src/components/Icons';
+import { Arrow, Sticks } from '@/components/Icons';
 import { PlayerPanel } from './PlayerPanel';
 
 
@@ -68,10 +68,10 @@ export const TeamPage = () => {
 
 
   const teammates = []
-  const chainPlayers = players.filter(p => p.playerData.chainNumber === chainNumber) //Missunderstand process of reloading
+  const chainPlayers = players.filter((p: Player) => p.playerData.chainNumber === chainNumber) //Missunderstand process of reloading
 
   for (let i = 1; i < 6; i++) {
-    const player: Player | undefined = chainPlayers.find(p => p.playerData.gamePosition === i.toString())
+    const player: Player | undefined = chainPlayers.find((p: Player) => p.playerData.gamePosition === i.toString())
     let teammate;
     if (player) {
       teammate = <TeamMate onDoubleClick={() => deletePosition(player)} id={`${i}`}>{player.playerData.playerName}</TeamMate>
@@ -85,7 +85,7 @@ export const TeamPage = () => {
   const playerPanels = []
 
   for (let i = 1; i < 7; i++) {
-    const player: Player | undefined = chainPlayers.find(p => p.playerData.gamePosition === i.toString())
+    const player: Player | undefined = chainPlayers.find((p: Player) => p.playerData.gamePosition === i.toString())
     let playerPanel;
     if (player) {
       playerPanel = <PlayerPanel firstName={player.playerData.playerName} Name={''} id={`${i}`} />
@@ -121,7 +121,7 @@ export const TeamPage = () => {
           <ChoosePlayer
             onClose={() => setChooseActive(false)}
             onPlayerChoosed={handleSetPlayer}
-            players={players.filter(p => !p.playerData.gamePosition)}
+            players={players.filter((p: Player) => !p.playerData.gamePosition)}
           />}
       </div>
       <div className={s.playerPanelWrapper}>

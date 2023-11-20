@@ -1,9 +1,9 @@
-import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
-import { updateEditableName } from '@/src/store/slices/players';
-import { deletePlayer, updatePlayer } from '@/src/store/thunks/players';
+import { useAppDispatch, useAppSelector } from '@/shared/hooks/redux';
+import { updateEditableName } from '@/store/slices/players';
+import { deletePlayer, updatePlayer } from '@/store/thunks/players';
 import { FC } from 'react';
 import s from './PlayerPage.module.scss'
-import { Input, Modal } from '@/src/components';
+import { Input, Modal } from '@/components';
 
 interface EditPlayerProps {
   isActive?: boolean

@@ -3,8 +3,8 @@ import s from './Header.module.scss';
 import { Auth, Gamburger, Logo } from '../Icons';
 import cn from 'classnames'
 import { AuthModal } from '../Modals';
-import { useAppDispatch, useAppSelector } from '@/src/shared/hooks/redux';
-import { setAuth, setLogin, setPassword } from '@/src/store/slices/auth';
+import { useAppDispatch, useAppSelector } from '@/shared/hooks/redux';
+import { setAuth, setLogin, setPassword } from '@/store/slices/auth';
 import { MainMenu } from '../MainMenu';
 import { usePathname } from 'next/navigation';
 
