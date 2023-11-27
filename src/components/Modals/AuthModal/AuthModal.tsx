@@ -8,6 +8,8 @@ import { Input } from '@/components'
 import { Button } from '../../Button/Button'
 import { AuthLogo, CrossIcon } from '../../Icons'
 import { RegisterModal } from './RegisterModal'
+import * as api from '@/api'
+
 
 interface AuthModalProps {
   onCotinue: (login: string, password: string) => void
@@ -29,8 +31,10 @@ export const AuthModal: FC<AuthModalProps> = ({ onCotinue, onClose, isActive, se
   } = useForm<AuthModal>()
 
 
-  const onSubmit: SubmitHandler<AuthModal> = (formdata: AuthModal) => {
+  const onSubmit: SubmitHandler<AuthModal> = async (formdata: AuthModal) => {
     onCotinue(formdata.login, formdata.password)
+    const test = await api.users.authUser(formdata)
+    console.log(test)
   }
 
   const [isRegister, setRegister] = useState<boolean>(false)

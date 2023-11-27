@@ -8,8 +8,9 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
+  id    String     @id @default(uuid())
   firstName  String? @db.VarChar(255)
   secondName  String? @db.VarChar(255)
   email String  @unique @db.VarChar(255)
+  password String @db.VarChar(255)
 }
